@@ -36,7 +36,7 @@ public class Program {
         */
 
         System.out.println("=== TEST 5: Seller Update ===");
-        Seller  s1 = sellerDao.findById(10);
+        Seller  s1 = sellerDao.findById(2);
         s1.setName("Martha Wayne");
 
         sellerDao.update(s1);
@@ -46,7 +46,7 @@ public class Program {
 
 
         System.out.println("=== TEST 6: Seller Delete ===");
-        s1 = sellerDao.findById(10);
+        s1 = sellerDao.findById(2);
 
         sellerDao.deleteById(s1.getId());
         list = sellerDao.findAll();
