@@ -11,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SellerDaoJDBC implements SellerDao {
 
@@ -128,14 +130,24 @@ public class SellerDaoJDBC implements SellerDao {
             rs = st.executeQuery();
 
             List<Seller> list = new ArrayList<>();
+            Map<Integer,Department> map = new HashMap<>();
+
 
             while(rs.next()){
 
+                Department dep = map.get(rs.getInt("DepartmentId"));
 
-                Seller obj = instantiateSeller(rs,department);
+                if (dep == null) {
+
+                    dep = instantiateDepartment(rs);
+                    map.put(rs.getInt("DepartmentId"),dep);
+
+
+
+                }
+                Seller obj = instantiateSeller(rs, dep);
+
                 list.add(obj);
-
-
 
             }
             return list;
