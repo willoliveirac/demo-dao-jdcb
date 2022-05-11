@@ -26,9 +26,29 @@ public class Program {
         list = sellerDao.findAll();
         list.forEach(System.out::println);
 
+        /*
         System.out.println("=== TEST 4: Seller Insert ===");
         Seller s1 = new Seller(null,"Greg","Greg@gmail.com", new Date(),4000.0,new Department(2,null));
         sellerDao.insert(s1);
+        list = sellerDao.findAll();
+        System.out.println(s1.getId());
+        list.forEach(System.out::println);
+        */
+
+        System.out.println("=== TEST 5: Seller Update ===");
+        Seller  s1 = sellerDao.findById(10);
+        s1.setName("Martha Wayne");
+
+        sellerDao.update(s1);
+        list = sellerDao.findAll();
+        System.out.println(s1.getId());
+        list.forEach(System.out::println);
+
+
+        System.out.println("=== TEST 6: Seller Delete ===");
+        s1 = sellerDao.findById(10);
+
+        sellerDao.deleteById(s1.getId());
         list = sellerDao.findAll();
         System.out.println(s1.getId());
         list.forEach(System.out::println);
