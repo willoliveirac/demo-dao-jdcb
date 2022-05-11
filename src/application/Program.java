@@ -2,11 +2,10 @@ package application;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
-import model.dao.impl.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
-import java.util.Date;
+import java.util.List;
 
 public class Program {
 
@@ -15,13 +14,13 @@ public class Program {
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
-        System.out.println("=== TEST 1: Seller By Id ===");
-
-        Seller seller =sellerDao.findById(3);
-
+        System.out.println("=== TEST 2: Seller by Department - Will ===");
+        List<Seller> list = sellerDao.findByDepartment(new Department(2,"Electronics"));
 
 
-        System.out.println(seller);
+
+
+        list.forEach(System.out::println);
 
 
 
